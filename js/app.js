@@ -1,25 +1,33 @@
-let dead_zombies = 0
-let small_zombies = 0
-let mad_zombies = 0
-let strong_zombies = 0
+let deadZombiesCount = 0
+let smallZombiesCount = 0
+let madZombiesCount = 0
+let strongZombiesCount = 0
 
 for (let i = 0; i < zombiesData.length; i++) {
+    let HP = Number(zombiesData[i])
 
-	let HP = Number(zombiesData[i])
-
-	if (isNaN(HP) || HP < 1) {
-		dead_zombies++
-	} else if (HP < 11) {
-		small_zombies++
-	} else if (HP < 21) {
-		mad_zombies++
-	} else {
-		strong_zombies++
-	}
+    if (isNaN(HP) || HP < 1) {
+        deadZombiesCount++
+    } else if (HP < 11) {
+        smallZombiesCount++
+    } else if (HP < 21) {
+        madZombiesCount++
+    } else {
+        strongZombiesCount++
+    }
 }
 
-document.querySelector('.total-zombies').textContent += '{' + zombiesData.length + '}'
-document.querySelector('.dead-zombies').textContent += '{' + dead_zombies + '}'
-document.querySelector('.small-zombies').textContent += '{' + small_zombies + '}'
-document.querySelector('.mad-zombies').textContent += '{' + mad_zombies + '}'
-document.querySelector('.strong-zombies').textContent += '{' + strong_zombies + '}'
+
+let elementsValues = [
+    [".total-zombies", zombiesData.length],
+    [".dead-zombies", deadZombiesCount],
+    [".small-zombies", smallZombiesCount],
+    [".mad-zombies", madZombiesCount],
+    [".strong-zombies", strongZombiesCount],
+]
+
+for (let i = 0; i < elementsValues.length; i++) {
+    const element = document.querySelector(elementsValues[i][0])
+    element.textContent += elementsValues[i][1]
+    console.info(element.innerText)
+}
