@@ -1,33 +1,38 @@
-let deadZombiesCount = 0
-let smallZombiesCount = 0
-let madZombiesCount = 0
-let strongZombiesCount = 0
+const zombiesCounter = {
+    dead: 0,
+    small: 0,
+    mad: 0,
+    strong: 0,
+}
 
 for (let i = 0; i < zombiesData.length; i++) {
-    let HP = Number(zombiesData[i])
+    const HP = Number(zombiesData[i])
 
     if (isNaN(HP) || HP < 1) {
-        deadZombiesCount++
+        zombiesCounter.dead++
     } else if (HP < 11) {
-        smallZombiesCount++
+        zombiesCounter.small++
     } else if (HP < 21) {
-        madZombiesCount++
+        zombiesCounter.mad++
     } else {
-        strongZombiesCount++
+        zombiesCounter.strong++
     }
 }
 
+const totalZombiesElement = document.querySelector(".total-zombies")
+const deadZombiesElement = document.querySelector(".dead-zombies")
+const smallZombiesElement = document.querySelector(".small-zombies")
+const madZombiesElement = document.querySelector(".mad-zombies")
+const strongZombiesElement = document.querySelector(".strong-zombies")
 
-let elementsValues = [
-    [".total-zombies", zombiesData.length],
-    [".dead-zombies", deadZombiesCount],
-    [".small-zombies", smallZombiesCount],
-    [".mad-zombies", madZombiesCount],
-    [".strong-zombies", strongZombiesCount],
-]
+totalZombiesElement.textContent += zombiesData.length
+deadZombiesElement.textContent += zombiesCounter.dead
+smallZombiesElement.textContent += zombiesCounter.small
+madZombiesElement.textContent += zombiesCounter.mad
+strongZombiesElement.textContent += zombiesCounter.strong
 
-for (let i = 0; i < elementsValues.length; i++) {
-    const element = document.querySelector(elementsValues[i][0])
-    element.textContent += elementsValues[i][1]
-    console.info(element.innerText)
-}
+console.info(totalZombiesElement.innerText)
+console.info(deadZombiesElement.innerText)
+console.info(smallZombiesElement.innerText)
+console.info(madZombiesElement.innerText)
+console.info(strongZombiesElement.innerText)
