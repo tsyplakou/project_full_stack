@@ -1,7 +1,7 @@
-let dead_zombies = 0;
-let small_zombies = 0;
-let mad_zombies = 0;
-let strong_zombies = 0;
+let dead_zombies = 0
+let small_zombies = 0
+let mad_zombies = 0
+let strong_zombies = 0
 
 for (let i = 0; i < zombiesData.length; i++) {
 
