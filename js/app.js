@@ -1,25 +1,22 @@
-const iconsPath = "icons/"
-
 document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < zombies.length; i++) {
 
-        const zombieElement = document.createElement("img")
+        const zombieElement = document.createElement("div")
+        zombieElement.classList.add("zombie")
+
         zombieElement.addEventListener('click', () => {
-            zombieElement.src = iconsPath + "zombie-dead.gif"
+            zombieElement.classList.add("dead")
         })
-        let zombieImgName
 
         if (zombies[i].type === ZOMBIE_TYPE.SMALL){
-            zombieImgName = "zombie-small.gif"
+            zombieElement.classList.add("small")
         }
         else if (zombies[i].type === ZOMBIE_TYPE.MAD){
-            zombieImgName = "zombie-mad.gif"
+            zombieElement.classList.add("mad")
         }
         else if (zombies[i].type === ZOMBIE_TYPE.STRONG){
-            zombieImgName = "zombie-strong.gif"
+            zombieElement.classList.add("strong")
         }
-
-        zombieElement.src = iconsPath + zombieImgName
         document.querySelector(".zombies").appendChild(zombieElement)
     }
 })

@@ -3,3 +3,42 @@
 *:after {
     box-sizing: border-box;
 }
+
+.zombies {
+
+}
+
+/* Single zombies */
+
+.zombie {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.zombie:hover {
+    border: 3px solid red;
+}
+
+.small {
+    background-image: url("../icons/zombie-small.gif");
+    height: 84px;
+    width: 58px;
+}
+
+.mad {
+    background-image: url("../icons/zombie-mad.gif");
+    height: 138px;
+    width: 92px;
+}
+
+.strong {
+    background-image: url("../icons/zombie-strong.gif");
+    height: 146px;
+    width: 120px;
+}
+
+.dead {
+    background-image: url("../icons/zombie-dead.gif");
+}
