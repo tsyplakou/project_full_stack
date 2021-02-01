@@ -9,7 +9,8 @@
 
 .zombies {
 	padding-left: 200px;
-	padding-top: 340px;
+	display: flex;
+	align-items: center;
 	background-image: url("../icons/backyard.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -21,7 +22,6 @@
 /* Single zombies */
 
 .zombie {
-    display: inline-block;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -34,29 +34,29 @@
 }
 
 @keyframes zombie-run {
-  from {left:450px; top:0px;}
-  to {left:0px; top:0px;}
+  from {left:500px}
+  to {left:0px}
 }
 
 .small {
     background-image: url("../icons/zombie-small.gif");
     height: 84px;
     width: 58px;
-    animation-duration: 12s;
+    animation-duration: 15s;
 }
 
 .mad {
     background-image: url("../icons/zombie-mad.gif");
     height: 138px;
     width: 92px;
-    animation-duration: 15s;
+    animation-duration: 18s;
 }
 
 .strong {
     background-image: url("../icons/zombie-strong.gif");
     height: 146px;
     width: 120px;
-    animation-duration: 20s;
+    animation-duration: 23s;
 }
 
 .dead {
