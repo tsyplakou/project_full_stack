@@ -1,11 +1,14 @@
-let HP = 100
+let playerHP = 100
 let timer
 
 document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < zombies.length; i++) {
 
         const zombieElement = document.createElement("div")
+        const zombieStatusElement = document.createElement("div")
+
         zombieElement.classList.add("zombie")
+        zombieStatusElement.innerHTML = "<span>0</span> of <span>0</span>"
 
         zombieElement.addEventListener('click', () => {
             if (zombieElement.classList.contains("dead")) {
@@ -36,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Destroy zombie object if it near house
         setTimeout(() => {
             zombieElement.remove()
-            HP--
+            playerHP--
         }, timer)
     }
 })

@@ -3,3 +3,5 @@ const ZOMBIE_TYPE = {
     MAD: 2,
     STRONG: 3
 };
+
+const HIT_DAMAGE = 30;
