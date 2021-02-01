@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (zombies[i].type === ZOMBIE_TYPE.STRONG){
             zombieElement.classList.add("strong")
         }
-        document.querySelector(".zombies").appendChild(zombieElement)
+
+        document.querySelector(".line3").appendChild(zombieElement)
     }
 })
