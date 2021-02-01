@@ -9,9 +9,9 @@
 /* Zombies background */
 
 .battleground {
-    padding-left: 22vw;
-    padding-top: 15vw;
-    background-image: url("../icons/backyard.png");
+	padding-left: 22vw;
+	padding-top: 15vw;
+	background-image: url("../icons/backyard.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -20,9 +20,9 @@
 }
 
 .baseline {
-    height: 14.6vw;
-    width: 78vw;
-    display: flex;
+	height: 14.6vw;
+	width: 78vw;
+	display: flex;
 }
 
 /* Single zombies */
@@ -31,38 +31,41 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    position: relative;
+    position: absolute;
     animation-name: zombie-run;
+    animation-timing-function: linear;
 }
 
 .zombie:hover {
     border: 3px solid red;
 }
 
-@keyframes zombie-run {
-  from {left:50vw}
-  to {left:0px}
+@keyframes zombie-run  {
+  from {left:92vw}
+  to {left:22vw}
 }
 
 .small {
     background-image: url("../icons/zombie-small.gif");
+    margin-top: 6.2vw;
     height: 8.4vw;
     width: 5.8vw;
-    animation-duration: 15s;
+    animation-duration: 7s;
 }
 
 .mad {
     background-image: url("../icons/zombie-mad.gif");
+    margin-top: 0.8vw;
     height: 13.8vw;
     width: 9.2vw;
-    animation-duration: 18s;
+    animation-duration: 9s;
 }
 
 .strong {
     background-image: url("../icons/zombie-strong.gif");
     height: 14.6vw;
     width: 12vw;
-    animation-duration: 23s;
+    animation-duration: 12s;
 }
 
 .dead {
