@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         document.querySelector(".line3").appendChild(zombieElement)
+        zombieElement.appendChild(zombieStatusElement)
         // Destroy zombie object if it near house
         setTimeout(() => {
             zombieElement.remove()
