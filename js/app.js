@@ -5,7 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
         zombieElement.classList.add("zombie")
 
         zombieElement.addEventListener('click', () => {
-            zombieElement.classList.add("dead")
+            if (zombieElement.classList.contains("dead")) {
+                zombieElement.classList.remove("dead")
+            }
+            else {
+                zombieElement.classList.add("dead")
+            }
         })
 
         if (zombies[i].type === ZOMBIE_TYPE.SMALL){

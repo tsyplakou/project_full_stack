@@ -52,3 +52,7 @@
 .dead {
     background-image: url("../icons/zombie-dead.gif");
 }
+
+.dead:hover {
+    border: 3px solid green;
+}
