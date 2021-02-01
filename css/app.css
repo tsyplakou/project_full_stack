@@ -8,7 +8,7 @@
 /* Zombies background */
 
 .zombies {
-	padding-left: 500px;
+	padding-left: 200px;
 	padding-top: 340px;
 	background-image: url("../icons/backyard.png");
     background-repeat: no-repeat;
@@ -25,28 +25,38 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: relative;
+    animation-name: zombie-run;
 }
 
 .zombie:hover {
     border: 3px solid red;
 }
 
+@keyframes zombie-run {
+  0% {left:450px; top:0px;}
+  100% {left:0px; top:0px;}
+}
+
 .small {
     background-image: url("../icons/zombie-small.gif");
     height: 84px;
     width: 58px;
+    animation-duration: 12s;
 }
 
 .mad {
     background-image: url("../icons/zombie-mad.gif");
     height: 138px;
     width: 92px;
+    animation-duration: 15s;
 }
 
 .strong {
     background-image: url("../icons/zombie-strong.gif");
     height: 146px;
     width: 120px;
+    animation-duration: 20s;
 }
 
 .dead {
