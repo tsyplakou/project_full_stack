@@ -34,8 +34,8 @@
 }
 
 @keyframes zombie-run {
-  0% {left:450px; top:0px;}
-  100% {left:0px; top:0px;}
+  from {left:450px; top:0px;}
+  to {left:0px; top:0px;}
 }
 
 .small {
@@ -61,6 +61,7 @@
 
 .dead {
     background-image: url("../icons/zombie-dead.gif");
+    animation-play-state: paused;
 }
 
 .dead:hover {
