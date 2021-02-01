@@ -1,7 +1,7 @@
 *,
 *:before,
 *:after {
-	margin: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -9,9 +9,9 @@
 /* Zombies background */
 
 .battleground {
-	padding-left: 22vw;
-	padding-top: 15vw;
-	background-image: url("../icons/backyard.png");
+    padding-left: 22vw;
+    padding-top: 15vw;
+    background-image: url("../icons/backyard.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -20,9 +20,9 @@
 }
 
 .baseline {
-	height: 14.6vw;
-	width: 78vw;
-	display: flex;
+    height: 14.6vw;
+    width: 78vw;
+    display: flex;
 }
 
 /* Single zombies */
