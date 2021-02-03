@@ -28,7 +28,7 @@ function Zombie(zombieModel, events){
       health -= hitDamage
       zombieHealthBar.value = health
 
-      if (isAlive && health =< 0) {
+      if (isAlive && health <= 0) {
          isAlive = false
          zombieHealthBar.remove()
          zombieElement.classList.add("dead")
