@@ -73,6 +73,14 @@
     animation-play-state: paused;
 }
 
-.dead:hover {
-    border: 3px solid green;
+.zombie-status {
+	width: 100%;
+}
+
+.winner {
+	background-image: url("../icons/winner.gif");
+}
+
+.loser {
+	background-image: url("../icons/loser.gif");
 }

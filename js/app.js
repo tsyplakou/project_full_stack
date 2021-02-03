@@ -1,45 +1,18 @@
-let playerHP = 100
-let timer
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    for (let i = 0; i < zombies.length; i++) {
-
-        const zombieElement = document.createElement("div")
-        const zombieStatusElement = document.createElement("div")
-
-        zombieElement.classList.add("zombie")
-        zombieStatusElement.innerHTML = "<span>0</span> of <span>0</span>"
-
-        zombieElement.addEventListener('click', () => {
-            if (zombieElement.classList.contains("dead")) {
-                zombieElement.classList.remove("dead")
-            }
-            else {
-                zombieElement.classList.add("dead")
-            }
-            setTimeout(() => {
-                zombieElement.remove()
-            }, 3000)
-        })
-
-        if (zombies[i].type === ZOMBIE_TYPE.SMALL){
-            zombieElement.classList.add("small")
-            timer = zombies[i].timer
-        }
-        else if (zombies[i].type === ZOMBIE_TYPE.MAD){
-            zombieElement.classList.add("mad")
-            timer = zombies[i].timer
-        }
-        else if (zombies[i].type === ZOMBIE_TYPE.STRONG){
-            zombieElement.classList.add("strong")
-            timer = zombies[i].timer
-        }
-
-        document.querySelector(".line3").appendChild(zombieElement)
-        // Destroy zombie object if it near house
-        setTimeout(() => {
-            zombieElement.remove()
-            playerHP--
-        }, timer)
+    const events = {
+        onLose: () => {
+            document.querySelector(".battleground").classList.add("loser")
+        },
+        onWin: () => {
+            document.querySelector(".battleground").classList.add("winner")
+        },
     }
+    const game = new Game(document.querySelector(`.line${getRandomInt(1, 4)}`), events)
+    game.start()
 })
