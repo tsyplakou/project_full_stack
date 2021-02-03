@@ -4,18 +4,17 @@ function Game(container, events) {
     }
     Game.instance = this
 
-    let started = false
+    let alreadyStarted = false
     let zIndex = 0
-    let playerHP = 2
 
     this.start = () => {
-        if (!started){
-            started = true
+        if (!alreadyStarted){
+            alreadyStarted = true
             createZombie()
         }
     }
     const createZombie = () => {
-        if (zIndex >= zombies.length || playerHP <= 0) {
+        if (zIndex >= zombies.length) {
             onGameOver()
             return
         }
@@ -38,16 +37,15 @@ function Game(container, events) {
                 createZombie()
             },
             onFinish: () => {
-                playerHP--
-                createZombie()
+                onGameOver()
             },
         }
         const zombie = new ZombieClass(zombieModel, events)
-        zombie.addZombieElementToContainer(container)
+        zombie.addZombieToContainer(container)
         zIndex++
     }
     const onGameOver = () => {
-        if (playerHP > 0) {
+        if (zIndex == zombies.length) {
             events.onWin()
         }
         else {

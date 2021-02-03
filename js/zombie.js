@@ -2,15 +2,15 @@ function Zombie(zombieModel, events){
    let health = zombieModel.health
    let isAlive = true
    const zombieElement = document.createElement("div")
-   const zombieStatusElement = document.createElement("progress")
+   const zombieHealthBar = document.createElement("progress")
 
-   this.addZombieElementToContainer = (container) => {
+   this.addZombieToContainer = (container) => {
        zombieElement.classList.add("zombie")
-       zombieStatusElement.classList.add("zombie-status")
-       zombieStatusElement.max = health
-       zombieStatusElement.value = health
+       zombieHealthBar.classList.add("zombie-status")
+       zombieHealthBar.max = health
+       zombieHealthBar.value = health
 
-       zombieElement.appendChild(zombieStatusElement)
+       zombieElement.appendChild(zombieHealthBar)
        zombieElement.classList.add(this.className)
 
        zombieElement.addEventListener('click', () => {
@@ -26,12 +26,12 @@ function Zombie(zombieModel, events){
    }
    const hitZombie = (hitDamage) => {
       health -= hitDamage
-      zombieStatusElement.value = health
+      zombieHealthBar.value = health
 
-      if (isAlive && health < 0) {
+      if (isAlive && health =< 0) {
          isAlive = false
+         zombieHealthBar.remove()
          zombieElement.classList.add("dead")
-         zombieStatusElement.remove()
          setTimeout(() => {
             zombieElement.remove()
             events.onDead()
