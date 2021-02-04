@@ -5,24 +5,50 @@
     box-sizing: border-box;
 }
 
+.game-sector {
+    width: 1200px;
+    height: 900px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url("../icons/backyard.png");
+}
+
+.command-panel {
+    height: 240px;
+    display: flex;
+}
+
+.button {
+    width: 187px;
+    height: 45px;
+}
+.button:hover {
+    border: 1px solid red;
+}
+
+.pause {
+    background-image: url("../icons/button-pause.png");
+}
+
+.continue {
+    background-image: url("../icons/button-continue.png");
+}
+
+.restart {
+    background-image: url("../icons/button-restart.png");
+}
 
 /* Zombies background */
 
 .battleground {
-	padding-left: 22vw;
-	padding-top: 15vw;
-	background-image: url("../icons/backyard.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 75vw; /* 75% of width */
+    padding-left: 300px;
 }
 
 .baseline {
-	height: 14.6vw;
-	width: 78vw;
-	display: flex;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Single zombies */
@@ -32,55 +58,49 @@
     background-position: center;
     background-size: cover;
     position: absolute;
-    animation-name: zombie-run;
-    animation-timing-function: linear;
 }
 
 .zombie:hover {
-    border: 3px solid red;
-}
-
-@keyframes zombie-run  {
-  from {left:92vw}
-  to {left:22vw}
+    border: 2px solid red;
 }
 
 .small {
     background-image: url("../icons/zombie-small.gif");
-    margin-top: 6.2vw;
-    height: 8.4vw;
-    width: 5.8vw;
-    animation-duration: 7s;
+    margin-top: 63px;
+    height: 57px;
+    width: 41px;
 }
 
 .mad {
     background-image: url("../icons/zombie-mad.gif");
-    margin-top: 0.8vw;
-    height: 13.8vw;
-    width: 9.2vw;
-    animation-duration: 9s;
+    height: 112px;
+    width: 75px;
 }
 
 .strong {
     background-image: url("../icons/zombie-strong.gif");
-    height: 14.6vw;
-    width: 12vw;
-    animation-duration: 12s;
+    height: 112px;
+    width: 75px;
+}
+
+.bird {
+    background-image: url("../icons/zombie-bird.gif");
+    height: 90px;
+    width: 68px;
 }
 
 .dead {
     background-image: url("../icons/zombie-dead.gif");
-    animation-play-state: paused;
 }
 
 .zombie-status {
-	width: 100%;
+    width: 100%;
 }
 
 .winner {
-	background-image: url("../icons/winner.gif");
+    background-image: url("../icons/winner.gif");
 }
 
 .loser {
-	background-image: url("../icons/loser.gif");
+    background-image: url("../icons/loser.gif");
 }

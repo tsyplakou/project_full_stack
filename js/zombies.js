@@ -1,7 +1,11 @@
 const zombies = [
     {
+        type: ZOMBIE_TYPE.BIRD,
+        health: 40
+    },
+    {
         type: ZOMBIE_TYPE.SMALL,
-        health: 50
+        health: 60
     },
     {
         type: ZOMBIE_TYPE.MAD,
