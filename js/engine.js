@@ -1,24 +1,79 @@
-function Game(container, events) {
+function Game(containers, events) {
     if (Game.instance) {
         return Game.instance
     }
     Game.instance = this
 
-    let alreadyStarted = false
-    let zIndex = 0
+    let started = false
+    let paused = false
+    const activeInstances = []
+    let tickCounter = 0
+    const actionsOnTick = {}
 
-    this.start = () => {
-        if (!alreadyStarted){
-            alreadyStarted = true
-            createZombie()
-        }
-    }
-    const createZombie = () => {
-        if (zIndex >= zombies.length) {
+    const tick = () => {
+        if (checkGameEnd()) {
             onGameOver()
             return
         }
 
+        setTimeout(() => {
+            tickCounter++
+
+            if (paused) {
+                return
+            }
+
+            if (actionsOnTick[tickCounter]) {
+                for (let i = 0; i < actionsOnTick[tickCounter].length; i++) {
+                    actionsOnTick[tickCounter][i]()
+                }
+                delete actionsOnTick[tickCounter]
+            }
+
+            for (let i=0; i < activeInstances.length; i++) {
+                activeInstances[i].doNextStep()
+            }
+
+            tick()
+        }, 20);
+    }
+    this.start = () => {
+        if (started) {
+            return
+        }
+
+        for (let i = 0; i < zombies.length; i++) {
+            const randomTick = getRandomInt(1, 10) * 25
+            addTickAction(randomTick, () => createZombie(i))
+        }
+
+        tick()
+    }
+    this.pause = () => {
+        paused = true
+        events.onPause()
+    }
+    this.continue = () => {
+        if (!paused) {
+            return
+        }
+
+        paused = false
+        events.onContinue()
+        tick()
+    }
+    const addTickAction = (tickNr, action) => {
+        if (!actionsOnTick[tickNr]) {
+            actionsOnTick[tickNr] = [action]
+        }
+        else {
+            actionsOnTick[tickNr].push(action)
+        }
+    }
+    const removeActiveInstance = (instance) => {
+        activeInstances.splice(activeInstances.indexOf(instance), 1)
+    }
+    const createZombie = (zIndex) => {
         const zombieModel = zombies[zIndex]
         let ZombieClass
 
@@ -31,21 +86,45 @@ function Game(container, events) {
         else if (zombieModel.type == ZOMBIE_TYPE.STRONG) {
             ZombieClass = StrongZombie
         }
+        else if (zombieModel.type == ZOMBIE_TYPE.BIRD) {
+            ZombieClass = BirdZombie
+        }
 
         const events = {
-            onDead: () => {
-                createZombie()
+            onDead: (zombie) => {
+                zombie.destroy()
+                removeActiveInstance(zombie)
             },
-            onFinish: () => {
+            onFinish: (zombie) => {
+                zombie.destroy()
+                removeActiveInstance(zombie)
                 onGameOver()
             },
+            onClick: (zombie) => {
+                if (paused) {
+                    return
+                }
+                zombie.hitZombie(HIT_DAMAGE)
+            }
         }
         const zombie = new ZombieClass(zombieModel, events)
-        zombie.addZombieToContainer(container)
-        zIndex++
+
+        zombie.addZombieToContainer(getRandomFromArray(containers))
+        activeInstances.push(zombie)
+    }
+    const checkGameEnd = () => {
+        return (!Object.keys(actionsOnTick).length && !activeInstances.length)
     }
     const onGameOver = () => {
-        if (zIndex == zombies.length) {
+        for (let i=0; i < activeInstances.length; i++ ) {
+            activeInstances[i].destroy()
+        }
+
+        for (let i=0; i < actionsOnTick.length; i++ ) {
+            delete actionsOnTick[i]
+        }
+
+        if (!activeInstances.length) {
             events.onWin()
         }
         else {

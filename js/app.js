@@ -4,7 +4,11 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function getRandomFromArray(array=[]) {
+    return array[Math.floor(Math.random() * array.length)]
+}
+
+document.addEventListener("DOMContentLoaded", () => {
     const events = {
         onLose: () => {
             document.querySelector(".battleground").classList.add("loser")
@@ -12,7 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
         onWin: () => {
             document.querySelector(".battleground").classList.add("winner")
         },
+        onPause: () => {
+            // Show PAUSED element
+        },
+        onContinue: () => {
+            // Hide PAUSED element
+        },
     }
-    const game = new Game(document.querySelector(`.line${getRandomInt(1, 4)}`), events)
+    const game = new Game(document.querySelectorAll(".baseline"), events)
     game.start()
+
+    const pauseButton = document.querySelector(".pause")
+    const continueButton = document.querySelector(".continue")
+    const restartButton = document.querySelector(".restart")
+
+    pauseButton.addEventListener("click", () => {
+        game.pause()
+    })
+    continueButton.addEventListener("click", () => {
+        game.continue()
+    })
+    restartButton.addEventListener("click", () => {
+        document.location.reload()
+    })
 })
